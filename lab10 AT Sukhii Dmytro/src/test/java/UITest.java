@@ -1,26 +1,35 @@
 import Factory.BrowserFactory;
-import com.github.dockerjava.api.model.Driver;
-import org.testng.Assert;
-import org.testng.annotations.Test;
-import PropertiUtil.PropertyUtil;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
+
+
+import StackOverflow.BO.bAboutBO;
+import StackOverflow.BO.bLeadershipBO;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import PropertiUtil.Driver;
-import Selenium.opencart.po.ContactUsPO;
-import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
+import StackOverflow.BO.bPressBO;
 // CHROME DRIVER MANAGER
 public class UITest{
 
     @Test
-    public void buttonAbout() {
-        //WebDriver driver = Driver.getInstance().getDriver();
-        BrowserFactory.initDriver("Chrome");
-        driver.get("http://localhost/index.php?route=common/home");
+    public void buttonPress() {
+        BrowserFactory.initDriver("chrome");
+        bPressBO pressTest = new bPressBO();
+        Assert.assertTrue(pressTest.bpress());
+
     }
+
+    @Test
+    public void buttonAbout() {
+        BrowserFactory.initDriver("chrome");
+        bAboutBO aboutTest = new bAboutBO();
+        Assert.assertTrue(aboutTest.babout());
+    }
+    @Test
+    public void buttonLeadership() {
+        BrowserFactory.initDriver("chrome");
+        bLeadershipBO leadershipTest = new bLeadershipBO();
+        Assert.assertTrue(leadershipTest.bleadership());
+    }
+
 }
